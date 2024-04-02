@@ -7,6 +7,25 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+
+    public function hidding(Request $request)
+    {
+        $query_param = [];
+
+        $customers = Customer::when($request->has('search'), function ($query) use ($request) {
+            $key = explode(' ', $request['search']);
+            $query->where(function ($q) use ($key) {
+                foreach ($key as $value) {
+                    $q->orWhere('customername', 'like', "%{$value}%")
+                        ->orWhere('id', 'like', "%{$value}%");
+                }
+            });
+        })->get();
+
+        $query_param = $request->has('search') ? ['search' => $request['search']] : [];
+
+        return view('customer.front_hidden', compact('customers', 'query_param'));
+    }
     /**
      * Display a listing of the resource.
      */
@@ -14,7 +33,7 @@ class CustomerController extends Controller
     {
         $query_param = [];
 
-        $customers = Customer::when($request->has('search'), function($query) use ($request){
+        $customers = Customer::when($request->has('search'), function ($query) use ($request) {
             $key = explode(' ', $request['search']);
             $query->where(function ($q) use ($key) {
                 foreach ($key as $value) {
@@ -42,18 +61,30 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the incoming request data
+        $request->validate([
+            'customername' => 'required',
+            'companyname' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
+        ]);
+
+        // If validation passes, create a new Customer instance and save it
         $customers = new Customer();
-        $customers->ishidden = $request->ishidden;
         $customers->customername = $request->customername;
         $customers->companyname = $request->companyname;
         $customers->phone = $request->phone;
         $customers->email = $request->email;
         $customers->address = $request->address;
+        $customers->ishidden = $customers == 'on' ? 1 : 0;
 
         $customers->save();
-        // return redirect()->route('customer.index');
-        return to_route('customer.index');
+
+        // Redirect to the index page
+        return redirect()->route('customer.index')->with('success', 'Customer created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -78,13 +109,24 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'customername' => 'required',
+            'companyname' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
+        ]);
+
         $customers = Customer::find($id);
-        $customers->ishidden = $customers ? 1 : 0;
+        $customers->ishidden = $customers == 'on' ? 1 : 0;
         $customers->customername = $request->customername;
         $customers->companyname = $request->companyname;
         $customers->phone = $request->phone;
         $customers->email = $request->email;
         $customers->address = $request->address;
+
+        // Check if the 'ishidden' checkbox is checked in the request
+        $customers->ishidden = $request->has('ishidden');
 
         $customers->save();
         return redirect()->route('customer.index');
@@ -109,7 +151,7 @@ class CustomerController extends Controller
             $customers->delete();
 
             return redirect()->route('customer.index')->with('success', 'Customer has been deleted successfully.');
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->route('customer.index')->with('error', 'Error deleting the Customer. Please try again!');
         }
     }

@@ -86,10 +86,10 @@ th{
 .search-bar{
     margin-left: 20px;
     height: 38px;
-    max-width: 50vw;
+    max-width: 45vw;
 }
 .table-responsive{
-    max-height: 57vh;
+    max-height: 56vh;
     overflow: auto;
     }
 .label{
@@ -109,11 +109,18 @@ th{
     position: absolute;
     background: none;
     border: none;
-    right: 526px;
+    right: 595px;
     top: 0px;
     height: 38px;
     width: 45px;
 }
 .form-check{
     margin-left: 12px;
+}
+thead.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: #FFFFFF;
+    z-index: 1000; /* Ensure it's above other content */
 }
