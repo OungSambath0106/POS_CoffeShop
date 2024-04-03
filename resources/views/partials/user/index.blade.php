@@ -28,7 +28,7 @@
 
             <table class="table">
 
-                <thead>
+                <thead class="sticky">
                     <tr>
                         <th class="p-3 col-0" scope="col">#</th>
                         <th class="p-3 col-2" scope="col">User Name</th>

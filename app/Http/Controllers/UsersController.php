@@ -128,7 +128,8 @@ class UsersController extends Controller
         $users->ishidden = $request->has('ishidden');
 
         $users->save();
-        return redirect()->route('users.index');
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
 
     /**
