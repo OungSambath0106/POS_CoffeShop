@@ -23,7 +23,8 @@ Route::get('/', function () {
     return view('layouts.master');
 });
 
-Route::get('hidding', [CustomerController::class, 'hidding'])->name('hidding');
+Route::get('hidding_cus', [CustomerController::class, 'hidding_cus'])->name('hidding_cus');
+Route::get('hidding_user', [UsersController::class, 'hidding_user'])->name('hidding_user');
 
 Route::resources([
     "customer" => CustomerController::class,

@@ -1,6 +1,6 @@
 <div class="list-group w-auto p-3" style="border-radius: 10px">
     <div class="list-group-item" style="background-color: #3559E0" aria-current="true">
-        <h4 style="color: #FFFFFF;"><b>Users Lsit</b></h4>
+        <h4 style="color: #FFFFFF;"><b>Users Hidden Lsit</b></h4>
     </div>
     <div class="list-group-item">
         <div class="p-2 mt-3">
@@ -13,12 +13,9 @@
                             style="color: #3559e0;"></i></button>
 
                     <div>
-                        <a href="{{ route('hidding_user') }}" class="btn btn-primary "
-                            style="background-color: #3559E0; margin-left: 18vw;"><i class="fas fa-eye-slash"
-                                style="color: #ffffff;"></i> Hide</a>
-                        <a href="{{ route('users.create') }}" class="btn btn-primary "
-                            style="background-color: #3559E0;"><i class="fas fa-plus-circle fa-lg"
-                                style="color: #ffffff;"></i> Add New User</a>
+                        <a href="{{ route('users.index') }}" class="btn btn-primary "
+                            style="background-color: #3559E0; margin-left: 29vw;"><i class="fas fa-eye-slash"
+                                style="color: #ffffff;"></i> UnHide</a>
                     </div>
                 </div>
             </form>
@@ -42,7 +39,7 @@
                 <tbody>
                     @forelse ($users as $user)
                         <tr>
-                            @if ($user->ishidden == 0)
+                            @if ($user->ishidden != 0)
                                 <td class="p-3" scope="row"> {{ $user->id }} </td>
                                 <td class="p-3" scope="row"> {{ $user->name }} </td>
                                 <td class="p-3" scope="row"> {{ $user->email }} </td>

@@ -1,6 +1,6 @@
-<div class="list-group w-auto p-3 mt-3" style="border-radius: 10px">
+<div class="list-group w-auto p-3 mt-2" style="border-radius: 10px">
     <div class="list-group-item" style="background-color: #3559E0" aria-current="true">
-        <h4 style="color: #FFFFFF;"><b>Update Customer List</b></h4>
+        <h4 style="color: #FFFFFF;"><b>Detail Customer List</b></h4>
     </div>
     <div class="list-group-item">
         <div class="p-2 mt-3">

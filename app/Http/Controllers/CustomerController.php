@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
 
-    public function hidding(Request $request)
+    public function hidding_cus(Request $request)
     {
         $query_param = [];
 
@@ -72,12 +72,14 @@ class CustomerController extends Controller
 
         // If validation passes, create a new Customer instance and save it
         $customers = new Customer();
+        $customers->ishidden = $customers == 'on' ? 1 : 0;
+        // Check if the 'ishidden' checkbox is checked in the request
+        $customers->ishidden = $request->has('ishidden');
         $customers->customername = $request->customername;
         $customers->companyname = $request->companyname;
         $customers->phone = $request->phone;
         $customers->email = $request->email;
         $customers->address = $request->address;
-        $customers->ishidden = $customers == 'on' ? 1 : 0;
 
         $customers->save();
 
@@ -119,22 +121,17 @@ class CustomerController extends Controller
 
         $customers = Customer::find($id);
         $customers->ishidden = $customers == 'on' ? 1 : 0;
+        // Check if the 'ishidden' checkbox is checked in the request
+        $customers->ishidden = $request->has('ishidden');
         $customers->customername = $request->customername;
         $customers->companyname = $request->companyname;
         $customers->phone = $request->phone;
         $customers->email = $request->email;
         $customers->address = $request->address;
 
-        // Check if the 'ishidden' checkbox is checked in the request
-        $customers->ishidden = $request->has('ishidden');
 
         $customers->save();
         return redirect()->route('customer.index');
-    }
-
-    public function dashboard()
-    {
-        return view('dashboard');
     }
 
     /**

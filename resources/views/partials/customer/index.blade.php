@@ -13,7 +13,7 @@
                             style="color: #3559e0;"></i></button>
 
                     <div>
-                        <a href="{{ route('hidding')}}" class="btn btn-primary "
+                        <a href="{{ route('hidding_cus')}}" class="btn btn-primary "
                             style="background-color: #3559E0; margin-left: 18vw;"><i class="fas fa-eye-slash"
                                 style="color: #ffffff;"></i> Hide</a>
                         <a href="{{ route('customer.create') }}" class="btn btn-primary "
