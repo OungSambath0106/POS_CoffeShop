@@ -16,9 +16,7 @@
     @endif
 
 
-
     @include('partials.user.index')
-
 
 
     <script>

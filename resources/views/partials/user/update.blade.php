@@ -77,7 +77,7 @@
                         <div class="form-check form-switch">
                             <input name="ishidden" class="form-check-input" type="checkbox" role="switch"
                                 id="ishidden" @if ($users->ishidden) checked @endif>
-                            <label class="form-check-label" for="ishidden"> Hidding</label>
+                            <label class="form-check-label form-label" for="ishidden"> Hidding</label>
                         </div>
 
                         <div class="d-grid gap-1 d-md-flex justify-content-md-end position-absolute bottom-0 end-0"

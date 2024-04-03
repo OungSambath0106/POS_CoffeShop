@@ -9,8 +9,6 @@
                 <div class="input-group inline">
                     <input type="text" class="form-control search-bar" name="search" style="border-radius: 10px"
                         placeholder="Search for something" aria-label="Search" />
-                    <button class="btn-search" type="submit" style="border-radius: 10px;"><i class="fas fa-search"
-                            style="color: #3559e0;"></i></button>
 
                     <div>
                         <a href="{{ route('customer.index') }}" class="btn btn-primary "
@@ -67,7 +65,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="10">
+                            <td colspan="7">
                                 <h5> No Data </h5>
                             </td>
                         </tr>

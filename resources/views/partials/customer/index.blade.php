@@ -9,16 +9,14 @@
                 <div class="input-group inline">
                     <input type="text" class="form-control search-bar" name="search" style="border-radius: 10px"
                         placeholder="Search for something" aria-label="Search" />
-                    <button class="btn-search" type="submit" style="border-radius: 10px;"><i class="fas fa-search"
-                            style="color: #3559e0;"></i></button>
 
                     <div>
-                        <a href="{{ route('hidding_cus')}}" class="btn btn-primary "
+                        <a href="{{ route('hidding_cus') }}" class="btn btn-primary "
                             style="background-color: #3559E0; margin-left: 18vw;"><i class="fas fa-eye-slash"
                                 style="color: #ffffff;"></i> Hide</a>
                         <a href="{{ route('customer.create') }}" class="btn btn-primary "
                             style="background-color: #3559E0;"><i class="fas fa-plus-circle fa-lg"
-                            style="color: #ffffff;"></i> Add New Customer</a>
+                                style="color: #ffffff;"></i> Add New Customer</a>
                     </div>
                 </div>
             </form>
@@ -61,7 +59,7 @@
                                         <a href="{{ route('customer.edit', ['customer' => $cus->id]) }}" type="button"
                                             class="btn edit" style="background-color: #3559E0;border: none;"><i
                                                 class="fas fa-edit" style="color: #ffffff;"></i></a>
-                                        <button class="btn trash" onclick="return confirm()"
+                                        <button class="btn trash" onclick="return confirm('ហែងលុបធ្វើអីហាអាប្រកាច់, អាណាអោយហែងលុប ?')"
                                             style="background-color: #FF0000;border: none;"><i class="fas fa-trash"
                                                 style="color: #ffffff;"></i></button>
                                     </form>
@@ -70,7 +68,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="10">
+                            <td colspan="7">
                                 <h5> No Data </h5>
                             </td>
                         </tr>
