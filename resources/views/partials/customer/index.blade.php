@@ -11,10 +11,18 @@
                         placeholder="Search for something" aria-label="Search" />
 
                     <div>
-                        <a href="{{ route('hidding_cus') }}" class="btn btn-primary "
+                        <!-- Add refresh button -->
+                        <button type="submit" class="btn btn-primary" value="Refresh"
+                            style="background-color: #3559E0; margin-left:1vw;">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+
+                    <div>
+                        <a href="{{ route('hidding_cus') }}" class="btn btn-primary"
                             style="background-color: #3559E0; margin-left: 18vw;"><i class="fas fa-eye-slash"
                                 style="color: #ffffff;"></i> Hide</a>
-                        <a href="{{ route('customer.create') }}" class="btn btn-primary "
+                        <a href="{{ route('customer.create') }}" class="btn btn-primary"
                             style="background-color: #3559E0;"><i class="fas fa-plus-circle fa-lg"
                                 style="color: #ffffff;"></i> Add New Customer</a>
                     </div>
@@ -59,7 +67,8 @@
                                         <a href="{{ route('customer.edit', ['customer' => $cus->id]) }}" type="button"
                                             class="btn edit" style="background-color: #3559E0;border: none;"><i
                                                 class="fas fa-edit" style="color: #ffffff;"></i></a>
-                                        <button class="btn trash" onclick="return confirm('ហែងលុបធ្វើអីហាអាប្រកាច់, អាណាអោយហែងលុប ?')"
+                                        <button class="btn trash"
+                                            onclick="return confirm('ហែងលុបធ្វើអីហាអាប្រកាច់, អាណាអោយហែងលុប ?')"
                                             style="background-color: #FF0000;border: none;"><i class="fas fa-trash"
                                                 style="color: #ffffff;"></i></button>
                                     </form>
@@ -81,3 +90,10 @@
 
     </div>
 </div>
+
+<script>
+    document.getElementById('search').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        window.location.reload(); // Reload the page
+    });
+</script>

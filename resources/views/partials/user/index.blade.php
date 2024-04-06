@@ -11,6 +11,14 @@
                         placeholder="Search for something" aria-label="Search" />
 
                     <div>
+                        <!-- Add refresh button -->
+                        <button type="submit" class="btn btn-primary" value="Refresh"
+                            style="background-color: #3559E0; margin-left:1vw;">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+
+                    <div>
                         <a href="{{ route('hidding_user') }}" class="btn btn-primary "
                             style="background-color: #3559E0; margin-left: 18vw;"><i class="fas fa-eye-slash"
                                 style="color: #ffffff;"></i> Hide</a>
@@ -31,9 +39,9 @@
                         <th class="p-3 col-0" scope="col">#</th>
                         <th class="p-3 col-2" scope="col">User Name</th>
                         <th class="p-3 col-2" scope="col">Email</th>
-                        <th class="p-3 col-3" scope="col">Password</th>
+                        <th class="p-3 col-2" scope="col">Password</th>
                         <th class="p-3 col-2" scope="col">Permission</th>
-                        <th class="p-3 col-3" scope="col">Action</th>
+                        <th class="p-3 col-4" scope="col">Action</th>
                     </tr>
                 </thead>
 
@@ -56,7 +64,8 @@
                                         <a href="{{ route('users.edit', ['user' => $user->id]) }}" type="button"
                                             class="btn edit" style="background-color: #3559E0;border: none;"><i
                                                 class="fas fa-edit" style="color: #ffffff;"></i></a>
-                                        <button class="btn trash" onclick="return confirm('ហែងលុបធ្វើអីហាអាប្រកាច់, អាណាអោយហែងលុប ?')"
+                                        <button class="btn trash"
+                                            onclick="return confirm('ហែងលុបធ្វើអីហាអាប្រកាច់, អាណាអោយហែងលុប ?')"
                                             style="background-color: #FF0000;border: none;"><i class="fas fa-trash"
                                                 style="color: #ffffff;"></i></button>
                                     </form>
@@ -78,3 +87,10 @@
 
     </div>
 </div>
+
+<script>
+    document.getElementById('search').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        window.location.reload(); // Reload the page
+    });
+</script>

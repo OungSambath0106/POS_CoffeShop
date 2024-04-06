@@ -11,8 +11,16 @@
                         placeholder="Search for something" aria-label="Search" />
 
                     <div>
+                        <!-- Add refresh button -->
+                        <button type="submit" class="btn btn-primary" value="Refresh"
+                            style="background-color: #3559E0; margin-left:1vw;">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+
+                    <div>
                         <a href="{{ route('customer.index') }}" class="btn btn-primary "
-                            style="background-color: #3559E0; margin-left: 29vw;"><i class="fas fa-eye"
+                            style="background-color: #3559E0; margin-left: 30vw;"><i class="fas fa-eye"
                                 style="color: #ffffff;"></i></i> UnHide</a>
                     </div>
                 </div>
@@ -78,3 +86,10 @@
 
     </div>
 </div>
+
+<script>
+    document.getElementById('search').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        window.location.reload(); // Reload the page
+    });
+</script>
